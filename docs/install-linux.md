@@ -116,15 +116,3 @@ systemctl --user restart ethos.service
 If the panel cannot reach the server, check that `ethos serve` is running.
 If it still cannot, a field appears in the panel to paste the token: the
 contents of `~/.local/share/ethos/data_store/api_token`.
-
-## 5. What is tested
-
-Said plainly. These steps were run on a Linux machine with an NVIDIA card
-(Quadro RTX 8000, driver 580, Python 3.12, PyTorch 2.14 with CUDA 13): the
-wheel installs with `[cuda,imap]` into a clean environment, language
-detection loads, and `ethos serve` loads the 14B model and drafts a reply
-through the same calls the extension makes. Not run on Linux: reading real
-mail over IMAP (its code is shared with Windows and tested against a
-stand-in server), the extension in Chrome on a Linux desktop, and the systemd
-service. If one of them fails, the lines that start with `ethos:` in the
-browser console, or `journalctl --user -u ethos`, say what happened.
