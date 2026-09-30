@@ -10,8 +10,9 @@ driver (8 GB of memory on the card runs the small model, 12 GB the medium
 one, 16 GB or more the large one — chosen automatically), 16 GB of system
 memory, **20 GB of free disk** (the model comes pre-compressed: 2.5 GB for
 the small one, 6 GB for the medium, 9.5 GB for the large, plus about 5 GB
-for PyTorch), Gmail in Chrome, and a Gmail **app password** (below). An RTX
-50-series card needs one extra step — see the table at the end.
+for PyTorch), Gmail or Outlook on the web in Chrome (or Edge), and an **app
+password** from your mail provider (below). An RTX 50-series card needs one
+extra step — see the table at the end.
 
 ---
 
@@ -24,8 +25,9 @@ for PyTorch), Gmail in Chrome, and a Gmail **app password** (below). An RTX
    - downloads a Python runtime from github.com (about 45 MB),
    - installs PyTorch for your NVIDIA card and Ethos (**a few GB — this is
      the long step, tens of minutes on a slow connection**),
-   - asks for your **Gmail address**, the IMAP server (press Enter for
-     Gmail's), then your **app password** (below),
+   - asks whether you use **Gmail or Outlook on the web**, your address, the
+     IMAP server (press Enter for the default), then your **app password**
+     (below),
    - reads your 300 most recent sent messages — about a minute,
    - starts the server, which begins downloading the model.
 
@@ -33,6 +35,14 @@ for PyTorch), Gmail in Chrome, and a Gmail **app password** (below). An RTX
 Google account → Security → 2-Step Verification → App passwords → create one
 named "Ethos". It is 16 characters. Ethos uses it for that read and to fold
 in mail you send later; it is kept only in memory, never written to disk.
+
+**Outlook users, read this first.** Personal Outlook.com / Hotmail / Live
+accounts **do not accept a password for IMAP** — Microsoft requires its own
+sign-in (OAuth) for them, and Ethos does not do that sign-in. So the read of
+your sent mail will fail. Press **Enter** at the password prompt to skip it:
+Ethos still runs, but every draft is written from the thread alone, with no
+examples of how *you* write, which is noticeably more generic. A Microsoft
+365 work account may still allow IMAP with an app password — ask your IT.
 
 **Read the next section while it installs.**
 
@@ -54,7 +64,8 @@ in mail you send later; it is kept only in memory, never written to disk.
 - **Everything lives in one folder**: `%LOCALAPPDATA%\Ethos` (open it with
   `Win+R`, then paste that). The runtime, the mail it read, the pool, your
   drafts. Nothing is sent anywhere. Delete the folder and Ethos has
-  forgotten everything.
+  forgotten everything. The model itself is cached in
+  `%USERPROFILE%\.cache\huggingface`.
 - `Ethos.exe --setup` asks for the address again and rebuilds the pool;
   `Ethos.exe --reset` removes the runtime so the next launch reinstalls.
 
@@ -89,7 +100,31 @@ token: it is the contents of `%LOCALAPPDATA%\Ethos\data_store\api_token`.
 
 ---
 
-## 4. If something is off
+## 4. In Outlook on the web (Chrome or Edge)
+
+The same extension, the same panel. It runs on **Outlook in the browser** —
+`outlook.live.com` for a personal account, `outlook.office.com` for a work
+one. It cannot run inside the **Outlook desktop app**, which is not a web
+page; if you use that, open Outlook in the browser instead.
+
+1. Load the extension exactly as in section 3, then **reload the Outlook
+   tab**.
+2. Open a message and press **Alt+Shift+D**, or click the Ethos icon.
+3. **Click Reply or Reply all on the message first**, then press the key:
+   the reply box decides who the reply goes to, and the panel says so. With
+   no reply box open, it answers the message in the reading pane.
+4. Type what the reply should say, press **Draft**, then **Insert into
+   reply**. Edit, and send from Outlook; the sent version is recorded.
+
+**This part has not been tested on a real Outlook account.**
+If the panel says it cannot read the message, or Insert goes to the
+clipboard, press F12, open the Console, and send the lines that start with
+`ethos:` — they say what the page looked like to the extension, which is
+exactly what is needed to fix it.
+
+---
+
+## 5. If something is off
 
 | What you see | What it means |
 |---|---|
