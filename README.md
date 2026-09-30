@@ -19,9 +19,10 @@ normal mail client.
 |---|---|
 | **macOS** | `Ethos-vX.Y.Z.zip` — Apple Silicon, macOS 13+, 16 GB of memory (8 GB works, with a smaller model), ~10 GB of disk for the model |
 | **Windows** | `Ethos-vX.Y.Z.exe` — an NVIDIA GPU, and Gmail in Chrome |
+| **Linux** | `ethos-X.Y.Z-py3-none-any.whl` and `ethos-extension-X.Y.Z.zip` — an NVIDIA GPU, Python 3.11+, and Gmail or Outlook in Chrome |
 
-Each download carries its own installation notes, and they are also here:
-[macOS](docs/install-macos.md) · [Windows](docs/install-windows.md).
+The installation notes: [macOS](docs/install-macos.md) · [Windows](docs/install-windows.md) ·
+[Linux](docs/install-linux.md). The macOS and Windows downloads also carry theirs.
 
 On macOS the app is not signed by Apple, so the first launch has to be approved
 once in System Settings → Privacy & Security. The macOS notes walk through it.
