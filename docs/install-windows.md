@@ -25,24 +25,30 @@ extra step — see the table at the end.
    - downloads a Python runtime from github.com (about 45 MB),
    - installs PyTorch for your NVIDIA card and Ethos (**a few GB — this is
      the long step, tens of minutes on a slow connection**),
-   - asks whether you use **Gmail or Outlook on the web**, your address, the
-     IMAP server (press Enter for the default), then your **app password**
-     (below),
-   - reads your 300 most recent sent messages — about a minute,
-   - starts the server, which begins downloading the model.
+   - opens the **install window** (Edge's app window, no tabs) with three questions:
+     **how this PC uses Ethos** (drafting here; serving the model to other
+     computers, which connects to no mail account; or drafting on another
+     computer's model), **which account it learns your writing from** (an
+     IMAP account such as Gmail, Outlook, or none for now), and **where you
+     write** (tick all that apply: Gmail or Outlook on the web in Chrome or
+     Edge, Firefox, Outlook desktop). Your **app password** (below) goes in
+     the same window,
+   - starts downloading the model as soon as you answer the first question,
+     and reads your 300 most recent sent messages while it downloads,
+   - fetches the browser extension, if you write in the browser,
+   - waits for the model, then starts the server.
 
 **The app password.** Gmail needs one for the single read of your sent mail.
 Google account → Security → 2-Step Verification → App passwords → create one
 named "Ethos". It is 16 characters. Ethos uses it for that read and to fold
 in mail you send later; it is kept only in memory, never written to disk.
 
-**Outlook users, read this first.** Personal Outlook.com / Hotmail / Live
-accounts **do not accept a password for IMAP** — Microsoft requires its own
-sign-in (OAuth) for them, and Ethos does not do that sign-in. So the read of
-your sent mail will fail. Press **Enter** at the password prompt to skip it:
-Ethos still runs, but every draft is written from the thread alone, with no
-examples of how *you* write, which is noticeably more generic. A Microsoft
-365 work account may still allow IMAP with an app password — ask your IT.
+**Outlook users, read this first.** Outlook.com, Hotmail, Live and
+Microsoft 365 accounts **do not accept a password for IMAP**: Microsoft
+requires its own sign-in, which this installer does not do yet. Answer
+**Outlook** to the mail question: Ethos installs and runs, but every draft is
+written from the thread alone, with no examples of how *you* write, which is
+noticeably more generic.
 
 **Read the next section while it installs.**
 
@@ -56,8 +62,9 @@ examples of how *you* write, which is noticeably more generic. A Microsoft
 - **Nothing is trained.** Setup builds a small store of who you write to and
   how you sign off, and a pool of your own replies. Every draft is written
   by the model with a few of those replies shown to it as examples.
-- **The model is downloaded as soon as the server starts** — the console
-  shows the progress — once. A draft asked for before it is done waits.
+- **The model downloads during the install**, while your sent mail is read,
+  once. If that was interrupted, the server fetches the rest when it starts;
+  a draft asked for before it is done waits.
 - **It keeps itself current.** While it runs, mail you send is folded into
   the pool once an hour. Each launch asks for the app password again for
   that (press Enter to skip; the pool then just stays as it was).
@@ -66,7 +73,8 @@ examples of how *you* write, which is noticeably more generic. A Microsoft
   drafts. Nothing is sent anywhere. Delete the folder and Ethos has
   forgotten everything. The model itself is cached in
   `%USERPROFILE%\.cache\huggingface`.
-- `Ethos.exe --setup` asks for the address again and rebuilds the pool;
+- `Ethos.exe --setup` opens the install window again and installs what the
+  new answers need;
   `Ethos.exe --reset` removes the runtime so the next launch reinstalls.
 
 ---
@@ -76,8 +84,9 @@ examples of how *you* write, which is noticeably more generic. A Microsoft
 The Gmail side is a browser extension. It only ever talks to Ethos on this
 machine.
 
-1. Ethos put the extension in `%LOCALAPPDATA%\Ethos\extension` — the
-   console printed the full path.
+1. If you said you write in the browser, Ethos put the extension in
+   `%LOCALAPPDATA%\Ethos\extension` — the console printed the full path. If
+   not, run `Ethos.exe --setup` and pick the browser.
 2. In Chrome, open `chrome://extensions`, turn on **Developer mode**, click
    **Load unpacked**, and pick that folder.
 3. **Reload the Gmail tab** — a tab that was already open does not get the

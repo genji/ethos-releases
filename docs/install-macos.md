@@ -20,19 +20,29 @@ or Vivaldi. About 10 GB of free disk for the model.
    Settings → Privacy & Security**, scroll to the message about Ethos, click
    **Open Anyway**, and confirm. Once. (On macOS 13 and 14, right-click →
    Open does the same.)
-3. A dialog says "Ethos has not read your sent mail yet." Click **Set Up Now**.
-   A Terminal window opens and runs the setup. macOS asks whether
-   **Terminal** may control Mail — that is this step; allow it. (The first
-   time you press the hotkey later, it asks the same about **Ethos**; allow
-   that too. Without Chrome, Vivaldi, Brave, Edge or Arc, it also asks about
-   Safari and Finder, to place the draft window beside Mail; allow both.)
-4. Setup reads your 300 most recent sent messages and asks which of the
-   addresses it saw are yours. Answer, then let it run.
-5. When Terminal says setup is done, **launch Ethos again.** The first
-   launch handed setup to Terminal and quit, so nothing is running yet.
-   This one starts Ethos and begins the model download.
+3. The **install window** opens (a window of its own) and asks three questions:
+   - **How this Mac uses Ethos**: drafting here; serving the model to other
+     computers (it then connects to no mail account at all); or drafting on
+     another computer's model (no model is downloaded here).
+   - **Which account Ethos learns your writing from**: Mail.app, an IMAP
+     account (Gmail, iCloud, Fastmail, your own server), Outlook, or none for
+     now. This is only where your sent mail is read from. A Gmail account
+     set up in Mail.app works for drafting in Mail.app *and* in Gmail on the
+     web, so pick Mail.app.
+   - **Where you write**: tick all that apply, such as Mail.app *and* Gmail
+     on the web in Chrome. The browser extension is downloaded only if you
+     tick a browser.
+4. Press **Install**. The model has been downloading since you answered the
+   first question; the window shows it, the read of your 300 most recent
+   sent messages, and the extension. With Mail.app, macOS asks whether
+   **Ethos** may control Mail; that is the read, so allow it. (Without
+   Chrome, Vivaldi, Brave, Edge or Arc, it later also asks about Safari and
+   Finder, to place the draft window beside Mail; allow both.)
+5. When everything is in, Ethos starts by itself and the window shows what
+   to do next, such as loading the extension. To change the answers later,
+   use **Change what is installed…** in Ethos's menu bar item.
 
-**Step 4 takes a minute or two. Read the next section while it runs.**
+**Step 4 is the long one: the model is a few GB. Read the next section while it runs.**
 
 ---
 
@@ -41,9 +51,10 @@ or Vivaldi. About 10 GB of free disk for the model.
 - **Nothing is trained.** Setup builds a small store of who you write to and
   how you sign off, and a pool of your own replies. Every draft is written
   by the model with a few of those replies shown to it as examples.
-- **The model is downloaded when Ethos first starts**, a few GB, once. That
-  is the one long wait: a few minutes on a good connection, in the
-  background — a draft asked for before it is done simply waits. The model
+- **The model is downloaded during the install**, a few GB, once, while
+  your mail is read. That is the one long wait: a few minutes on a good
+  connection. If it was interrupted, Ethos fetches the rest when it starts,
+  and a draft asked for before it is done simply waits. The model
   is chosen for this Mac's memory — the 14B on 24 GB, the 8B on 16 GB, the
   4B on 8 GB.
 - **The hotkeys start Ethos when it is not running** (that first press waits
@@ -105,8 +116,9 @@ Press it with the sent message selected, or right after clicking Send.
 The Gmail side is a browser extension. It only ever talks to Ethos on
 this machine.
 
-1. Ethos put the extension in
-   `~/Library/Application Support/Ethos/extension`.
+1. If you said you write in the browser, Ethos put the extension in
+   `~/Library/Application Support/Ethos/extension`. If not, pick **Change
+   what is installed…** in Ethos's menu bar item and tick the browser.
 2. In the browser, open `chrome://extensions` (Vivaldi: `vivaldi://extensions`),
    turn on **Developer mode**, click **Load unpacked**, and pick that folder.
    In the folder picker press ⇧⌘G and paste

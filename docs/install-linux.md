@@ -10,7 +10,7 @@ Outlook on the web**, through a browser extension.
 16 GB or more the large one — chosen automatically), Python 3.11 or newer,
 Chrome or Chromium, about 20 GB of free disk, and an **app password** from
 your mail provider (section 2). From the release page: the wheel
-`ethos-<version>-py3-none-any.whl` and `ethos-extension-<version>.zip`.
+`ethos-<version>-py3-none-any.whl`; the installer fetches the extension.
 
 ---
 
@@ -31,36 +31,28 @@ Everything Ethos writes lives in `$ETHOS_HOME`, here `~/.local/share/ethos`:
 the mail it read, the pool of your replies, your drafts. Delete that folder and Ethos has
 forgotten everything. The model is cached in `~/.cache/huggingface`.
 
-## 2. Read your sent mail, once
+## 2. Answer the installer
+
+```bash
+read -rs IMAP_PASSWORD && export IMAP_PASSWORD   # only for an IMAP account: the app password
+ethos install --serve
+```
+
+The install window opens on its own: a Chrome, Chromium, Edge, Brave or
+Vivaldi app window, or, without one of those, a GTK window (it needs the
+distribution's `python3-gi` and `gir1.2-webkit2-4.1`, which most desktops
+have). It asks how this computer uses Ethos, which account it learns your
+writing from, and where you write; a model server is asked for no account,
+and the extension is fetched only when you write in the browser. The model
+downloads while your 300 most recent sent messages are read, then
+`--serve` starts Ethos in this terminal with the password still in memory.
+`ethos install --text` asks the same questions in the terminal instead.
 
 Gmail needs an **app password**: Google account → Security → 2-Step
-Verification → App passwords → create one named "Ethos". Personal
-Outlook.com accounts do not accept one for IMAP; skip this section and Ethos
-drafts from the thread alone, without examples of how you write.
-
-Tell Ethos where your mail is (replace the address):
-
-```bash
-mkdir -p ~/.local/share/ethos
-cat > ~/.local/share/ethos/config.toml <<'EOF'
-backend = "torch"
-
-[mail]
-source = "imap"
-
-[ingest.email]
-host = "imap.gmail.com"
-username = "you@example.com"
-EOF
-```
-
-Then read your 300 most recent sent messages — about a minute. The password
-is read from the terminal and kept in this shell's memory only:
-
-```bash
-read -rs IMAP_PASSWORD && export IMAP_PASSWORD
-ethos setup --source imap --me you@example.com
-```
+Verification → App passwords → create one named "Ethos". You can also type
+it in the window. Microsoft accounts (Outlook.com, Microsoft 365) do not
+accept one for IMAP; pick **Outlook** and Ethos drafts from the thread
+alone, without examples of how you write.
 
 ## 3. Run it
 
@@ -68,8 +60,8 @@ ethos setup --source imap --me you@example.com
 ethos serve
 ```
 
-The first start downloads the model — a few GB, once; a draft asked for
-before it is done waits. While it runs, mail you send is folded into the pool
+The model is already downloaded if `ethos install` finished; otherwise the
+first start fetches the rest, and a draft asked for before it is done waits. While it runs, mail you send is folded into the pool
 once an hour, as long as `IMAP_PASSWORD` is in its environment.
 
 To start it at login, as a systemd user service:
@@ -102,7 +94,8 @@ systemctl --user restart ethos.service
 
 ## 4. In Gmail or Outlook on the web
 
-1. Unzip `ethos-extension-<version>.zip` into a folder you keep.
+1. If you said you write in the browser, the installer put the extension in
+   `~/.local/share/ethos/extension` (if not, `ethos install --reconfigure`).
 2. In Chrome, open `chrome://extensions`, turn on **Developer mode**, click
    **Load unpacked**, and pick that folder.
 3. **Reload the mail tab** — a tab already open does not get the extension

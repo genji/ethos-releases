@@ -15,11 +15,19 @@ normal mail client.
 
 **[Latest release](https://github.com/genji/ethos-releases/releases/latest)**
 
+Download one file, the one for your system. Nothing else is needed: the
+installer asks how you will use Ethos and fetches the model, the browser
+extension and anything else that use needs.
+
 | | |
 |---|---|
 | **macOS** | `Ethos-vX.Y.Z.zip` — Apple Silicon, macOS 13+, 16 GB of memory (8 GB works, with a smaller model), ~10 GB of disk for the model |
-| **Windows** | `Ethos-vX.Y.Z.exe` — an NVIDIA GPU, and Gmail in Chrome |
-| **Linux** | `ethos-X.Y.Z-py3-none-any.whl` and `ethos-extension-X.Y.Z.zip` — an NVIDIA GPU, Python 3.11+, and Gmail or Outlook in Chrome |
+| **Windows** | `Ethos-vX.Y.Z.exe` — an NVIDIA GPU to run the model here |
+| **Linux** | `ethos-X.Y.Z-py3-none-any.whl` — Python 3.11+, an NVIDIA GPU to run the model here; then `ethos install --serve` opens the installer |
+
+The other files on a release are fetched by the installer; you do not need to
+download them. The one exception is `Ethos-Remote-vX.Y.Z.zip`, an optional add-on
+for drafting on another computer's model (see below).
 
 The installation notes: [macOS](docs/install-macos.md) · [Windows](docs/install-windows.md) ·
 [Linux](docs/install-linux.md). The macOS and Windows downloads also carry theirs.
@@ -27,15 +35,26 @@ The installation notes: [macOS](docs/install-macos.md) · [Windows](docs/install
 On macOS the app is not signed by Apple, so the first launch has to be approved
 once in System Settings → Privacy & Security. The macOS notes walk through it.
 
-## What it works with
+## What the installer asks
 
-- **Mail.app** on macOS — a hotkey on the selected message or the reply window
-  you already have open.
-- **Gmail** in Chrome or Vivaldi, through the extension both packages carry —
-  replies and new emails alike.
+1. **How this computer is used**: it runs the model and you draft on it; it is
+   a server other computers draft on (no mail account is connected); or you
+   draft here on another computer's model (no model is downloaded).
+2. **Which mail to learn from**: Mail.app, or any IMAP account such as Gmail.
+3. **Where you write**: Mail.app, Gmail or Outlook on the web in Chrome, Edge,
+   Brave, Vivaldi or Firefox, or the new Outlook. Pick as many as apply; the same Gmail account
+   can be used in both Mail.app and the browser.
 
-The first run reads your recent sent mail to learn how you write. That reading,
-the model, and every draft stay on the machine.
+The model starts downloading as soon as the first question is answered, while
+your recent sent mail is read to learn how you write. That reading, the model,
+and every draft stay on the machine.
+
+## Several computers, one model
+
+`Ethos-Remote-vX.Y.Z.zip` is the only extra download, and only for this setup:
+one computer holds the model and others draft on it over a tailnet. Install
+Ethos on every computer as above (the installer asks which role each one has),
+then add the Remote add-on on each. Its install notes are inside the zip.
 
 ## This repository
 
