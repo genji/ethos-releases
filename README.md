@@ -2,22 +2,19 @@
 
 Ethos drafts your email replies in your own voice, learning from your own past
 replies, with a language model that runs **entirely on your machine**. Nothing
-you write, receive or send leaves it — no account, no API key, no server.
+you write, receive or send leaves it.
 
 You press a hotkey on the message you are answering, type a line about what the
 reply should say, and it writes the reply. You edit it and send it from your
 normal mail client.
 
-> Early access. It is in daily use by its author and a small number of testers,
-> and it has rough edges. Bug reports are welcome.
+So far, I am the only one using it daily. There are probably a number of bugs so I welcome bug reports but telling me whether you keep using it or abandoned it is the most important.
 
 ## Download
 
 **[Latest release](https://github.com/genji/ethos-releases/releases/latest)**
 
-Download one file, the one for your system. Nothing else is needed: the
-installer asks how you will use Ethos and fetches the model, the browser
-extension and anything else that use needs.
+There is one file to download. Theinstaller asks how you will use Ethos and fetches the model, the browser extension and anything else that use needs.
 
 | | |
 |---|---|
