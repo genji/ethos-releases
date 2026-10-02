@@ -37,18 +37,30 @@ extra step — see the table at the end.
      and reads your 300 most recent sent messages while it downloads,
    - fetches the browser extension, if you write in the browser,
    - waits for the model, then starts the server.
+3. Ethos is now an installed app, for your Windows account only (no
+   administrator needed). It copies itself into `%LOCALAPPDATA%\Ethos`, so the
+   downloaded file can be deleted, and it adds:
+   - **Ethos in the Start menu**,
+   - **a start when you sign in**, with no window: the tray icon shows it runs,
+   - **an icon in the taskbar's tray** (by the clock; under the ^ arrow until
+     you drag it out) with the same menu as the Mac's menu bar item: what is
+     loaded and how much memory it holds, **Unload the model**, **Base model**
+     to switch models, **Languages**, **Fold in newly sent mail**, **Start
+     Ethos when I sign in** (untick it to stop the start at sign-in), **Change
+     what is installed…**, and **Quit Ethos**,
+   - **Ethos in Settings → Apps → Installed apps**, where **Uninstall** removes
+     it (below).
 
 **The app password.** Gmail needs one for the single read of your sent mail.
 Google account → Security → 2-Step Verification → App passwords → create one
 named "Ethos". It is 16 characters. Ethos uses it for that read and to fold
 in mail you send later; it is kept only in memory, never written to disk.
 
-**Outlook users, read this first.** Outlook.com, Hotmail, Live and
-Microsoft 365 accounts **do not accept a password for IMAP**: Microsoft
-requires its own sign-in, which this installer does not do yet. Answer
-**Outlook** to the mail question: Ethos installs and runs, but every draft is
-written from the thread alone, with no examples of how *you* write, which is
-noticeably more generic.
+**Outlook users.** Outlook.com, Hotmail, Live and Microsoft 365 accounts
+**do not accept a password for IMAP**, so answer **Outlook** to the mail
+question: the install window shows a short code to type at
+https://microsoft.com/devicelogin. Ethos asks Microsoft for `Mail.Read` only,
+reads your Sent Items, and keeps the sign-in in memory, never on disk.
 
 **Read the next section while it installs.**
 
@@ -65,9 +77,10 @@ noticeably more generic.
 - **The model downloads during the install**, while your sent mail is read,
   once. If that was interrupted, the server fetches the rest when it starts;
   a draft asked for before it is done waits.
-- **It keeps itself current.** While it runs, mail you send is folded into
-  the pool once an hour. Each launch asks for the app password again for
-  that (press Enter to skip; the pool then just stays as it was).
+- **The app password is asked once, in the install window**, never when
+  Ethos starts. While that first run lasts, mail you send is folded into the
+  pool once an hour. After that the pool stays as it was until
+  `Ethos.exe --setup` reads your sent mail again.
 - **Everything lives in one folder**: `%LOCALAPPDATA%\Ethos` (open it with
   `Win+R`, then paste that). The runtime, the mail it read, the pool, your
   drafts. Nothing is sent anywhere. Delete the folder and Ethos has
@@ -76,6 +89,12 @@ noticeably more generic.
 - `Ethos.exe --setup` opens the install window again and installs what the
   new answers need;
   `Ethos.exe --reset` removes the runtime so the next launch reinstalls.
+- **To uninstall**: Settings → Apps → Installed apps → Ethos → Uninstall, or
+  `Ethos.exe --uninstall`. It stops Ethos, removes the shortcut, the start at
+  sign-in and the runtime, and asks whether to delete what Ethos learned from
+  your mail too (by default that stays, and a new install picks it up). The
+  model stays in `%USERPROFILE%\.cache\huggingface`; delete its `models--*`
+  folders to free that space.
 
 ---
 
@@ -133,7 +152,63 @@ exactly what is needed to fix it.
 
 ---
 
-## 5. If something is off
+## 5. In Firefox
+
+The same extension works in Firefox 140 or later, for Gmail and Outlook on
+the web alike. Install the signed copy, `ethos-firefox-<version>.xpi` from the
+release page:
+
+1. Drag the `.xpi` file onto a Firefox window (or File → Open File…), and
+   click **Add** when Firefox asks.
+2. Open `about:addons` → **Ethos** → **Permissions**, and check that access to
+   `127.0.0.1` and to your mail site is on.
+3. Reload the Gmail or Outlook tab, then use it exactly as in section 3 or 4.
+
+It stays installed across restarts. Without the signed file, Firefox only
+loads the folder as a *temporary* add-on, removed when Firefox quits: open
+`about:debugging#/runtime/this-firefox`, click **Load Temporary Add-on…**, pick
+`manifest.json` in `%LOCALAPPDATA%\Ethos\extension`, then steps 2 and 3.
+
+---
+
+## 6. In Thunderbird
+
+If you ticked Thunderbird, the installer put the add-on in the Ethos folder
+as `ethos-thunderbird.xpi`, and its last page shows the path. Add it once:
+
+1. In Thunderbird (128 or later), open **Tools → Add-ons and Themes** (under the **≡** menu).
+2. Click the gear, choose **Install Add-on From File**, and pick that file.
+   Thunderbird does not need it signed, and it stays installed.
+3. Open a reply and click **Ethos** in its toolbar, or press **Alt+Shift+D**.
+   Type what the reply should say, pick a draft, and it lands where the caret
+   is. Nothing is sent for you.
+
+## 7. In the new Outlook
+
+If you ticked the new Outlook, the installer set up the **Ethos add-in**: a
+button in Outlook's ribbon that opens a pane where you say what the reply
+should say and pick a draft, which lands in Outlook's own editor. Classic
+Outlook is not supported.
+
+Office loads add-ins over https only, so the install made a certificate for
+`localhost` and asked Windows (confirm when it asks) to trust it once. Adding the add-in to Outlook
+is one step the installer cannot do for you:
+
+1. Open https://aka.ms/olksideload and sign in with your Outlook account.
+2. Choose **My add-ins**, then under **Custom add-ins**: **Add a custom
+   add-in** → **Add from file**.
+3. Pick `outlook/manifest.xml` in the Ethos folder (the install window's last
+   page shows the path).
+4. Open a message and click **Ethos** in the ribbon (or under **Apps**). Ethos
+   must be running.
+
+Add-ins follow the mailbox, so it then appears in Outlook on Mac and on
+the web too. If your organization blocks custom add-ins, an admin can deploy
+the same manifest from the Microsoft 365 admin center (Integrated apps).
+
+---
+
+## 8. If something is off
 
 | What you see | What it means |
 |---|---|
