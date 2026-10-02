@@ -40,9 +40,10 @@ once in System Settings → Privacy & Security. The macOS notes walk through it.
 1. **How this computer is used**: it runs the model and you draft on it; it is
    a server other computers draft on (no mail account is connected); or you
    draft here on another computer's model (no model is downloaded).
-2. **Which mail to learn from**: Mail.app, or any IMAP account such as Gmail.
+2. **Which mail to learn from**: Mail.app, any IMAP account such as Gmail, or
+   Outlook.com and Microsoft 365 through a Microsoft sign-in.
 3. **Where you write**: Mail.app, Gmail or Outlook on the web in Chrome, Edge,
-   Brave, Vivaldi or Firefox, or the new Outlook. Pick as many as apply; the same Gmail account
+   Brave, Vivaldi or Firefox, Thunderbird, or the new Outlook. Pick as many as apply; the same Gmail account
    can be used in both Mail.app and the browser.
 
 The model starts downloading as soon as the first question is answered, while

@@ -51,8 +51,9 @@ downloads while your 300 most recent sent messages are read, then
 Gmail needs an **app password**: Google account → Security → 2-Step
 Verification → App passwords → create one named "Ethos". You can also type
 it in the window. Microsoft accounts (Outlook.com, Microsoft 365) do not
-accept one for IMAP; pick **Outlook** and Ethos drafts from the thread
-alone, without examples of how you write.
+accept one for IMAP; pick **Outlook** and the window shows a short code to
+type at https://microsoft.com/devicelogin. Ethos asks for `Mail.Read` only and
+keeps the sign-in in memory.
 
 ## 3. Run it
 
@@ -92,6 +93,27 @@ read -rs IMAP_PASSWORD && export IMAP_PASSWORD && systemctl --user import-enviro
 systemctl --user restart ethos.service
 ```
 
+### The tray icon
+
+On a desktop, `ethos install` puts an Ethos icon in the tray and starts it at
+every login. It has the same menu as the Mac's menu bar item: what is loaded
+and how much memory it holds, **Unload the model**, **Base model** to switch
+models, **Languages**, **Fold in newly sent mail**, **Start Ethos when I log
+in** (untick it to stop the start at login), **Change what is installed…**, and
+**Quit Ethos**. When Ethos is not running, **Start Ethos** starts `ethos serve`.
+
+`ethos tray` starts the icon by hand. It runs under the system's Python, which
+needs GTK 3's bindings and, on GNOME, an AppIndicator extension to show tray
+icons:
+
+```bash
+sudo apt install python3-gi gir1.2-ayatanaappindicator3-0.1   # Debian, Ubuntu
+sudo dnf install python3-gobject libayatana-appindicator-gtk3  # Fedora
+```
+
+If you start Ethos with the systemd service above instead, untick **Start
+Ethos when I log in** so the two do not race for the port.
+
 ## 4. In Gmail or Outlook on the web
 
 1. If you said you write in the browser, the installer put the extension in
@@ -109,3 +131,22 @@ systemctl --user restart ethos.service
 If the panel cannot reach the server, check that `ethos serve` is running.
 If it still cannot, a field appears in the panel to paste the token: the
 contents of `~/.local/share/ethos/data_store/api_token`.
+
+In Firefox (140 or later), install the signed copy instead,
+`ethos-firefox-<version>.xpi` from the release page: drag it onto a Firefox
+window, click **Add**, and reload the mail tab. It stays installed. Without
+the signed file, Firefox only loads the folder as a *temporary* add-on,
+removed when it quits: `about:debugging#/runtime/this-firefox` → **Load
+Temporary Add-on…** → `manifest.json` in that folder.
+
+## 5. In Thunderbird
+
+If you ticked Thunderbird, the installer put the add-on in the Ethos folder
+as `ethos-thunderbird.xpi`, and its last page shows the path. Add it once:
+
+1. In Thunderbird (128 or later), open **Tools → Add-ons and Themes** (under the **≡** menu).
+2. Click the gear, choose **Install Add-on From File**, and pick that file.
+   Thunderbird does not need it signed, and it stays installed.
+3. Open a reply and click **Ethos** in its toolbar, or press **Alt+Shift+D**.
+   Type what the reply should say, pick a draft, and it lands where the caret
+   is. Nothing is sent for you.

@@ -140,9 +140,52 @@ If the panel says it cannot reach the server, check that Ethos is running.
 If the panel says Ethos refused the token request, a field appears in it:
 paste the contents of `~/Library/Application Support/Ethos/data_store/api_token`.
 
+**In Firefox** (140 or later), install the signed copy instead,
+`ethos-firefox-<version>.xpi` from the release page: drag it onto a Firefox
+window, click **Add**, and reload the Gmail tab. It stays installed. Without
+the signed file, Firefox only loads the folder as a *temporary* add-on,
+removed when it quits: `about:debugging#/runtime/this-firefox` → **Load
+Temporary Add-on…** → `manifest.json` in that folder (⇧⌘G works in the
+picker too).
+
+## 5. In Thunderbird
+
+If you ticked Thunderbird, the installer put the add-on in the Ethos folder
+as `ethos-thunderbird.xpi`, and its last page shows the path. Add it once:
+
+1. In Thunderbird (128 or later), open **Tools → Add-ons and Themes**.
+2. Click the gear, choose **Install Add-on From File**, and pick that file.
+   Thunderbird does not need it signed, and it stays installed.
+3. Open a reply and click **Ethos** in its toolbar, or press **Alt+Shift+D**.
+   Type what the reply should say, pick a draft, and it lands where the caret
+   is. Nothing is sent for you.
+
+## 6. In the new Outlook
+
+If you ticked the new Outlook, the installer set up the **Ethos add-in**: a
+button in Outlook's ribbon that opens a pane where you say what the reply
+should say and pick a draft, which lands in Outlook's own editor. Classic
+Outlook is not supported.
+
+Office loads add-ins over https only, so the install made a certificate for
+`localhost` and asked macOS for your password to trust it once. Adding the add-in to Outlook
+is one step the installer cannot do for you:
+
+1. Open https://aka.ms/olksideload and sign in with your Outlook account.
+2. Choose **My add-ins**, then under **Custom add-ins**: **Add a custom
+   add-in** → **Add from file**.
+3. Pick `outlook/manifest.xml` in the Ethos folder (the install window's last
+   page shows the path).
+4. Open a message and click **Ethos** in the ribbon (or under **Apps**). Ethos
+   must be running.
+
+Add-ins follow the mailbox, so it then appears in Outlook on Windows and on
+the web too. If your organization blocks custom add-ins, an admin can deploy
+the same manifest from the Microsoft 365 admin center (Integrated apps).
+
 ---
 
-## 5. If something is off
+## 7. If something is off
 
 | What you see | What it means |
 |---|---|
