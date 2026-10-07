@@ -20,10 +20,7 @@ or Vivaldi. About 10 GB of free disk for the model.
    Settings → Privacy & Security**, scroll to the message about Ethos, click
    **Open Anyway**, and confirm. Once. (On macOS 13 and 14, right-click →
    Open does the same.)
-3. The **install window** opens (a window of its own) and asks three questions:
-   - **How this Mac uses Ethos**: drafting here; serving the model to other
-     computers (it then connects to no mail account at all); or drafting on
-     another computer's model (no model is downloaded here).
+3. The **install window** opens (a window of its own) and asks two questions:
    - **Which account Ethos learns your writing from**: Mail.app, an IMAP
      account (Gmail, iCloud, Fastmail, your own server), Outlook, or none for
      now. This is only where your sent mail is read from. A Gmail account
@@ -32,9 +29,9 @@ or Vivaldi. About 10 GB of free disk for the model.
    - **Where you write**: tick all that apply, such as Mail.app *and* Gmail
      on the web in Chrome. The browser extension is downloaded only if you
      tick a browser.
-4. Press **Install**. The model has been downloading since you answered the
-   first question; the window shows it, the read of your 300 most recent
-   sent messages, and the extension. With Mail.app, macOS asks whether
+4. Press **Install**. The model has been downloading since the window
+   opened; the window shows it, the read of your 300 most recent sent
+   messages, and the extension. With Mail.app, macOS asks whether
    **Ethos** may control Mail; that is the read, so allow it. (Without
    Chrome, Vivaldi, Brave, Edge or Arc, it later also asks about Safari and
    Finder, to place the draft window beside Mail; allow both.)
@@ -125,8 +122,9 @@ this machine.
    `~/Library/Application Support/Ethos/extension`.
 3. **Reload the Gmail tab** — a tab that was already open does not get the
    extension until it reloads.
-4. Open a conversation and press **⌥⇧D** (Option, Shift, D), or click the
-   Ethos icon in the toolbar. A panel appears at the top right.
+4. Open a conversation and click **Ethos** next to Reply and Forward (or
+   next to Send in a reply or a new email), press **⌥⇧D** (Option, Shift, D),
+   or click the Ethos icon in the toolbar. A panel appears at the top right.
 5. Same rule as in Mail: **to answer a particular message, or to reply to
    everyone, click Reply or Reply all on that message first**, then press
    the key — the panel says which message it is answering. With no reply
@@ -156,7 +154,7 @@ as `ethos-thunderbird.xpi`, and its last page shows the path. Add it once:
 1. In Thunderbird (128 or later), open **Tools → Add-ons and Themes**.
 2. Click the gear, choose **Install Add-on From File**, and pick that file.
    Thunderbird does not need it signed, and it stays installed.
-3. Open a reply and click **Ethos** in its toolbar, or press **Alt+Shift+D**.
+3. Open a reply and click **Ethos** in its toolbar, or press **⌥⇧D** (Option, Shift, D).
    Type what the reply should say, pick a draft, and it lands where the caret
    is. Nothing is sent for you.
 
@@ -184,6 +182,14 @@ the web too. If your organization blocks custom add-ins, an admin can deploy
 the same manifest from the Microsoft 365 admin center (Integrated apps).
 
 ---
+
+## Updating
+
+Put the new `Ethos.app` in Applications over the old one and open it. Your
+answers, your examples and the model stay: nothing is asked or read again. If
+the old Ethos is still running, the new one stops it and starts itself. Options
+added since your install (Thunderbird, Firefox…) are in **Change what
+is installed…**, with your current answers already ticked.
 
 ## 7. If something is off
 

@@ -25,16 +25,13 @@ extra step — see the table at the end.
    - downloads a Python runtime from github.com (about 45 MB),
    - installs PyTorch for your NVIDIA card and Ethos (**a few GB — this is
      the long step, tens of minutes on a slow connection**),
-   - opens the **install window** (Edge's app window, no tabs) with three questions:
-     **how this PC uses Ethos** (drafting here; serving the model to other
-     computers, which connects to no mail account; or drafting on another
-     computer's model), **which account it learns your writing from** (an
-     IMAP account such as Gmail, Outlook, or none for now), and **where you
-     write** (tick all that apply: Gmail or Outlook on the web in Chrome or
-     Edge, Firefox, Outlook desktop). Your **app password** (below) goes in
-     the same window,
-   - starts downloading the model as soon as you answer the first question,
-     and reads your 300 most recent sent messages while it downloads,
+   - opens the **install window** (Edge's app window, no tabs) with two questions:
+     **which account it learns your writing from** (an IMAP account such as
+     Gmail, Outlook, or none for now), and **where you write** (tick all that
+     apply: Gmail or Outlook on the web in Chrome or Edge, Firefox, Outlook
+     desktop). Your **app password** (below) goes in the same window,
+   - starts downloading the model as soon as the window opens, and reads
+     your 300 most recent sent messages while it downloads,
    - fetches the browser extension, if you write in the browser,
    - waits for the model, then starts the server.
 3. Ethos is now an installed app, for your Windows account only (no
@@ -110,8 +107,9 @@ machine.
    **Load unpacked**, and pick that folder.
 3. **Reload the Gmail tab** — a tab that was already open does not get the
    extension until it reloads.
-4. Open a conversation and press **Alt+Shift+D**, or click the Ethos icon in
-   the toolbar. A panel appears at the top right.
+4. Open a conversation and click **Ethos** next to Reply and Forward (or
+   next to Send in a reply or a new email), press **Alt+Shift+D**, or click
+   the Ethos icon in the toolbar. A panel appears at the top right.
 5. **To answer a particular message, or to reply to everyone, click Reply
    or Reply all on that message first**, then press the key — the panel
    says which message it is answering. With no reply box open, it answers
@@ -207,6 +205,14 @@ the web too. If your organization blocks custom add-ins, an admin can deploy
 the same manifest from the Microsoft 365 admin center (Integrated apps).
 
 ---
+
+## Updating
+
+Run the new `Ethos.exe`. It reinstalls Ethos itself (a minute; PyTorch is
+already there), keeps your answers, your examples and the model, stops the
+older Ethos if it is running, and starts the new one. Options added since your
+install are in **Change what is installed…** in the tray icon's menu, with
+your current answers already ticked.
 
 ## 8. If something is off
 

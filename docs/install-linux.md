@@ -41,9 +41,8 @@ ethos install --serve
 The install window opens on its own: a Chrome, Chromium, Edge, Brave or
 Vivaldi app window, or, without one of those, a GTK window (it needs the
 distribution's `python3-gi` and `gir1.2-webkit2-4.1`, which most desktops
-have). It asks how this computer uses Ethos, which account it learns your
-writing from, and where you write; a model server is asked for no account,
-and the extension is fetched only when you write in the browser. The model
+have). It asks which account it learns your writing from and where you
+write, and the extension is fetched only when you write in the browser. The model
 downloads while your 300 most recent sent messages are read, then
 `--serve` starts Ethos in this terminal with the password still in memory.
 `ethos install --text` asks the same questions in the terminal instead.
@@ -114,6 +113,20 @@ sudo dnf install python3-gobject libayatana-appindicator-gtk3  # Fedora
 If you start Ethos with the systemd service above instead, untick **Start
 Ethos when I log in** so the two do not race for the port.
 
+### Updating
+
+Install the new wheel over the old one. `--force-reinstall --no-deps` replaces
+Ethos even when the version number is unchanged; the second line refreshes its
+add-ons with your saved answers:
+
+```bash
+~/.local/share/ethos-venv/bin/pip install --force-reinstall --no-deps ethos-<version>-py3-none-any.whl
+~/.local/share/ethos-venv/bin/ethos install --version <version>
+```
+
+Then restart Ethos: **Quit Ethos** and **Start Ethos** in the tray icon's menu,
+or `systemctl --user restart ethos.service`.
+
 ## 4. In Gmail or Outlook on the web
 
 1. If you said you write in the browser, the installer put the extension in
@@ -122,7 +135,8 @@ Ethos when I log in** so the two do not race for the port.
    **Load unpacked**, and pick that folder.
 3. **Reload the mail tab** — a tab already open does not get the extension
    until it reloads.
-4. Open a conversation and press **Alt+Shift+D**, or click the Ethos icon.
+4. Open a conversation and click **Ethos** next to Reply and Forward in Gmail (or
+   next to Send in a reply), press **Alt+Shift+D**, or click the Ethos icon.
    To answer a particular message, or to reply to everyone, click Reply or
    Reply all on it first.
 5. Type what the reply should say, press **Draft**, then **Insert into
