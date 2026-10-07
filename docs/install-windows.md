@@ -209,10 +209,12 @@ the same manifest from the Microsoft 365 admin center (Integrated apps).
 ## Updating
 
 Run the new `Ethos.exe`. It reinstalls Ethos itself (a minute; PyTorch is
-already there), keeps your answers, your examples and the model, stops the
-older Ethos if it is running, and starts the new one. Options added since your
-install are in **Change what is installed…** in the tray icon's menu, with
-your current answers already ticked.
+already there), keeps your examples and the model, and stops the older Ethos if
+it is running. The install window then opens once, with your answers already
+ticked: check them, tick anything new, and click through. It fetches this
+version's browser extension and add-ons into the same places, so afterwards
+reload the extension once (the reload arrow on Ethos in `chrome://extensions`;
+in Firefox, drag the new `.xpi` in).
 
 ## 8. If something is off
 

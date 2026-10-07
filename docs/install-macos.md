@@ -186,10 +186,12 @@ the same manifest from the Microsoft 365 admin center (Integrated apps).
 ## Updating
 
 Put the new `Ethos.app` in Applications over the old one and open it. Your
-answers, your examples and the model stay: nothing is asked or read again. If
-the old Ethos is still running, the new one stops it and starts itself. Options
-added since your install (Thunderbird, Firefox…) are in **Change what
-is installed…**, with your current answers already ticked.
+examples and the model stay. The install window opens once, with your answers
+already ticked: check them, tick anything new (Thunderbird, Firefox…), and
+click through. It fetches this version's browser extension and add-ons into the
+same places, so afterwards reload the extension once (the reload arrow on Ethos
+in `chrome://extensions`; in Firefox, drag the new `.xpi` in). If the old Ethos
+is still running, the new one stops it and starts itself.
 
 ## 7. If something is off
 
