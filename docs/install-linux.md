@@ -97,8 +97,7 @@ systemctl --user restart ethos.service
 On a desktop, `ethos install` puts an Ethos icon in the tray and starts it at
 every login. It has the same menu as the Mac's menu bar item: what is loaded
 and how much memory it holds, **Unload the model**, **Base model** to switch
-models, **Languages**, **Fold in newly sent mail**, **Start Ethos when I log
-in** (untick it to stop the start at login), **Change what is installed…**, and
+models, **Languages**, **Start Ethos when I log in** (untick it to stop the start at login), **Change what is installed…**, and
 **Quit Ethos**. When Ethos is not running, **Start Ethos** starts `ethos serve`.
 
 `ethos tray` starts the icon by hand. It runs under the system's Python, which

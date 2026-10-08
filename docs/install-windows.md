@@ -42,8 +42,8 @@ extra step — see the table at the end.
    - **an icon in the taskbar's tray** (by the clock; under the ^ arrow until
      you drag it out) with the same menu as the Mac's menu bar item: what is
      loaded and how much memory it holds, **Unload the model**, **Base model**
-     to switch models, **Languages**, **Fold in newly sent mail**, **Start
-     Ethos when I sign in** (untick it to stop the start at sign-in), **Change
+     to switch models, **Languages**, **Start Ethos when I
+     sign in** (untick it to stop the start at sign-in), **Change
      what is installed…**, and **Quit Ethos**,
    - **Ethos in Settings → Apps → Installed apps**, where **Uninstall** removes
      it (below).
