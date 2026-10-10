@@ -15,11 +15,8 @@ or Vivaldi. About 10 GB of free disk for the model.
 ## 1. Install (two minutes)
 
 1. Drag **Ethos.app** wherever you like — Applications is fine.
-2. **Open it once past Gatekeeper.** The app is not signed by Apple, so the
-   first double-click is refused ("cannot be opened"). Then open **System
-   Settings → Privacy & Security**, scroll to the message about Ethos, click
-   **Open Anyway**, and confirm. Once. (On macOS 13 and 14, right-click →
-   Open does the same.)
+2. Double-click it. The app is signed and notarized by Apple, so macOS only
+   asks once whether to open an app downloaded from the internet.
 3. The **install window** opens (a window of its own) and asks two questions:
    - **Which account Ethos learns your writing from**: Mail.app, an IMAP
      account (Gmail, iCloud, Fastmail, your own server), Outlook, or none for
@@ -199,7 +196,7 @@ is still running, the new one stops it and starts itself.
 |---|---|
 | "No message is selected in Mail" | Select the message, or open a reply, then press the key again. |
 | ⌃⌥⌘R does nothing | With Mail frontmost, check System Settings → Keyboard → Keyboard Shortcuts… → Services → General for *Draft with Ethos*. If it is missing, log out and back in. |
-| "cannot be opened" when launching the app | Gatekeeper: System Settings → Privacy & Security → Open Anyway (step 2). |
+| "cannot be opened" when launching the app | A copy built from source is not notarized: System Settings → Privacy & Security → Open Anyway. |
 | The window says *from the message selected in Mail* but you had a reply open | Mail hid the reply window from Ethos. Press ⌘S in that reply window, then ⌃⌥⌘R again; Insert then goes through the clipboard. |
 | The first draft takes minutes | The model is downloading. Once. |
 | A draft takes many seconds every time | Something else is using the memory. Pick a smaller model from the menu bar's *Base model* submenu, or set `[model] name` in `~/Library/Application Support/Ethos/config.toml` to a smaller one such as `"mlx-community/Qwen3-4B-4bit"`. |
