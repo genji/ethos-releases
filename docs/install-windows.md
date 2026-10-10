@@ -49,8 +49,8 @@ extra step — see the table at the end.
      it (below).
 
 **The app password.** Gmail needs one for the single read of your sent mail.
-Google account → Security → 2-Step Verification → App passwords → create one
-named "Ethos". It is 16 characters. Ethos uses it for that read and to fold
+Your Google password does not work here: turn on 2-Step Verification, then
+create one named "Ethos" at https://myaccount.google.com/apppasswords. It is 16 characters. Ethos uses it for that read and to fold
 in mail you send later; it is kept only in memory, never written to disk.
 
 **Outlook users.** Outlook.com, Hotmail, Live and Microsoft 365 accounts

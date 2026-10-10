@@ -47,8 +47,9 @@ downloads while your 300 most recent sent messages are read, then
 `--serve` starts Ethos in this terminal with the password still in memory.
 `ethos install --text` asks the same questions in the terminal instead.
 
-Gmail needs an **app password**: Google account → Security → 2-Step
-Verification → App passwords → create one named "Ethos". You can also type
+Gmail needs an **app password**, not your Google password: turn on 2-Step
+Verification, then create one named "Ethos" at
+https://myaccount.google.com/apppasswords. You can also type
 it in the window. Microsoft accounts (Outlook.com, Microsoft 365) do not
 accept one for IMAP; pick **Outlook** and the window shows a short code to
 type at https://microsoft.com/devicelogin. Ethos asks for `Mail.Read` only and
