@@ -26,12 +26,16 @@ or Vivaldi. About 10 GB of free disk for the model.
    - **Where you write**: tick all that apply, such as Mail.app *and* Gmail
      on the web in Chrome. The browser extension is downloaded only if you
      tick a browser.
+   - **Show Ethos in the Dock** (off unless you tick it): an Ethos icon in
+     the Dock as well as the menu bar item. Clicking it opens Settings,
+     where the same tick turns it off again.
 4. Press **Install**. The model has been downloading since the window
    opened; the window shows it, the read of your 300 most recent sent
    messages, and the extension. With Mail.app, macOS asks whether
    **Ethos** may control Mail; that is the read, so allow it. (Without
-   Chrome, Vivaldi, Brave, Edge or Arc, it later also asks about Safari and
-   Finder, to place the draft window beside Mail; allow both.)
+   Chrome, Vivaldi, Brave, Edge or Arc, it later also asks about Safari, to
+   open the draft window, and about Mail again, to place it beside Mail;
+   allow both.)
 5. When everything is in, Ethos starts by itself and the window shows what
    to do next, such as loading the extension. To change the answers later,
    use **Change what is installed…** in Ethos's menu bar item.
@@ -56,8 +60,8 @@ or Vivaldi. About 10 GB of free disk for the model.
   Double-clicking the app starts it; add it to *Login Items* (System
   Settings → General) so it is always there.
 - **It keeps itself current.** While it runs, it folds mail you send into
-  the pool: once an hour, two minutes after you insert a draft, and right
-  after ⌃⌥⌘S (below). Only while Mail is open — Ethos never launches Mail
+  the pool: once an hour, and two minutes after you insert a draft. Only
+  while Mail is open — Ethos never launches Mail
   to read it. You never need to run setup again unless your
   addresses change.
 - **Everything lives in one folder**: `~/Library/Application Support/Ethos`
@@ -94,14 +98,17 @@ Edit the draft as you like, then **Insert**: the text lands in the Mail
 window, above the quoted thread, with the recipients and subject you set.
 Finish in Mail and send it as usual.
 
-**One case to know about.** If your reply window has been open for a while,
-Mail saves it as a draft, and Mail will not let Ethos write into a saved
-draft. Insert then puts the text on the clipboard and the window tells you
-to press ⌘V in your draft. Everything else works the same.
+**A reply you opened yourself.** Mail lets Ethos read a reply window you
+opened (Reply, Reply All, Forward) but not write into it. So Insert does what
+you would: it brings that window to the front and pastes the reply at the top
+of its message, above the quote. That needs **Accessibility** permission: the
+first Insert asks for it, for **EthosPaste**, Ethos's paste helper (System
+Settings → Privacy & Security → Accessibility → EthosPaste). Until it is
+allowed, the button reads **Copy to clipboard** (its tooltip says why): press
+⌘V in your reply. A copy built from source asks again after each rebuild.
 
-**⌃⌥⌘S after sending** records the message exactly as you sent it, your
-edits included, and folds it into the examples at once.
-Press it with the sent message selected, or right after clicking Send.
+What you finally send, your edits included, is matched to its draft and
+folded into the examples on the next refresh.
 
 ---
 
@@ -120,7 +127,7 @@ this machine.
 3. **Reload the Gmail tab** — a tab that was already open does not get the
    extension until it reloads.
 4. Open a conversation and click **Ethos** next to Reply and Forward (or
-   next to Send in a reply or a new email), press **⌥⇧D** (Option, Shift, D),
+   next to Send in a reply or a new email), press **⌃⇧D** (Control, Shift, D),
    or click the Ethos icon in the toolbar. A panel appears at the top right.
 5. Same rule as in Mail: **to answer a particular message, or to reply to
    everyone, click Reply or Reply all on that message first**, then press
@@ -129,7 +136,27 @@ this machine.
 6. Type what the reply should say, press **Draft**, then **Insert into
    reply**: the text lands in the reply box (Gmail opens one if none is
    open). Edit, and send from Gmail. The sent version is recorded
-   automatically; there is no ⌃⌥⌘S step here.
+   automatically.
+
+**Or skip the panel and type in the reply box itself** (Gmail, Outlook on the
+web, Superhuman). Click Reply, type a line of what the reply should say, and
+press **⌃⇧D** with the cursor still in the box: Ethos replaces your line with
+the reply the panel would have written from it, above the quote or below it,
+wherever you typed it. In Gmail and Outlook you can also answer point by
+point: expand the quote (the **…** button), type a short note on its own line
+under each paragraph you answer, and press **⌃⇧D**: each note becomes the
+passage it stands for, in order, and the quote stays as it is. (Outlook does not
+mark its quote, so Ethos takes as a note any line that is not in the message you
+answer.) ⌘Z brings your notes back. In an empty reply box,
+the key opens the panel as before.
+
+**Superhuman** works the same way in its web app,
+[mail.superhuman.com](https://mail.superhuman.com), in the same browser
+(click **Ethos** next to Send in a reply or a new email, or the round
+**Ethos** button at the bottom right, press **⌃⇧D**, or click the Ethos icon).
+If the panel says it cannot find the message, select the text
+of the message you are answering and press **Draft** again. The Superhuman
+desktop app takes no extensions, so Ethos cannot draft there.
 
 If the panel says it cannot reach the server, check that Ethos is running.
 If the panel says Ethos refused the token request, a field appears in it:
@@ -151,9 +178,17 @@ as `ethos-thunderbird.xpi`, and its last page shows the path. Add it once:
 1. In Thunderbird (128 or later), open **Tools → Add-ons and Themes**.
 2. Click the gear, choose **Install Add-on From File**, and pick that file.
    Thunderbird does not need it signed, and it stays installed.
-3. Open a reply and click **Ethos** in its toolbar, or press **⌥⇧D** (Option, Shift, D).
+3. Open a reply and click **Ethos** in its toolbar, or press **⌃⇧D** (Control, Shift, D).
    Type what the reply should say, pick a draft, and it lands where the caret
-   is. Nothing is sent for you.
+   is. Nothing is sent for you. From a message you are reading, the same
+   button sits above the message (and the same shortcut works): Insert opens
+   the reply with the draft in it.
+4. Or write in the email itself: type a line of what the reply should say,
+   above or below the quote, or short notes between its paragraphs, and press
+   **⌃⇧D**. Each note becomes the passage it stands for, in place, and the
+   quote stays as it is. In an empty reply, the key opens Ethos as in step 3.
+   Ethos may not be able to bring the notes back with ⌘Z: keep a copy if
+   you want them.
 
 ## 6. In the new Outlook
 
@@ -190,6 +225,10 @@ same places, so afterwards reload the extension once (the reload arrow on Ethos
 in `chrome://extensions`; in Firefox, drag the new `.xpi` in). If the old Ethos
 is still running, the new one stops it and starts itself.
 
+If you use the Outlook add-in, an update keeps its certificate while macOS
+still trusts it, so it does not ask for your password again. It asks only when
+the certificate is missing, no longer trusted, or within 60 days of expiring.
+
 ## 7. If something is off
 
 | What you see | What it means |
@@ -197,11 +236,12 @@ is still running, the new one stops it and starts itself.
 | "No message is selected in Mail" | Select the message, or open a reply, then press the key again. |
 | ⌃⌥⌘R does nothing | With Mail frontmost, check System Settings → Keyboard → Keyboard Shortcuts… → Services → General for *Draft with Ethos*. If it is missing, log out and back in. |
 | "cannot be opened" when launching the app | A copy built from source is not notarized: System Settings → Privacy & Security → Open Anyway. |
-| The window says *from the message selected in Mail* but you had a reply open | Mail hid the reply window from Ethos. Press ⌘S in that reply window, then ⌃⌥⌘R again; Insert then goes through the clipboard. |
+| The window says *from the message selected in Mail* but you had a reply open | Mail hid the reply window from Ethos. Press ⌘S in that reply window, then ⌃⌥⌘R again. |
+| Insert says the reply is on the clipboard | Ethos may not paste into a reply you opened yet: switch on EthosPaste in System Settings → Privacy & Security → Accessibility, or press ⌘V in the reply. |
 | The first draft takes minutes | The model is downloading. Once. |
-| A draft takes many seconds every time | Something else is using the memory. Pick a smaller model from the menu bar's *Base model* submenu, or set `[model] name` in `~/Library/Application Support/Ethos/config.toml` to a smaller one such as `"mlx-community/Qwen3-4B-4bit"`. |
+| A draft takes many seconds every time | Something else is using the memory. Pick a smaller model in **Settings…** from the menu bar item, or set `[model] name` in `~/Library/Application Support/Ethos/config.toml` to a smaller one such as `"mlx-community/Qwen3-4B-4bit"`. |
 | Keys typed in the Gmail panel vanish | Reload the extension at `chrome://extensions`, then the Gmail tab. |
-| ⌥⇧D does nothing in a Gmail window you installed as an app | Reload the extension, then reload that window. An app window gets no extension shortcuts from the browser, so Ethos listens for the keys itself — which needs the reloaded copy. |
+| ⌃⇧D does nothing in a Gmail window you installed as an app | Reload the extension, then reload that window. An app window gets no extension shortcuts from the browser, so Ethos listens for the keys itself — which needs the reloaded copy. |
 
 The log is at `~/Library/Logs/Ethos/server.log`. If you report a problem,
 that file plus what the window said under the recipient is what we need.

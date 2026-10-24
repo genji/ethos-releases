@@ -41,9 +41,9 @@ extra step — see the table at the end.
    - **a start when you sign in**, with no window: the tray icon shows it runs,
    - **an icon in the taskbar's tray** (by the clock; under the ^ arrow until
      you drag it out) with the same menu as the Mac's menu bar item: what is
-     loaded and how much memory it holds, **Unload the model**, **Base model**
-     to switch models, **Languages**, **Start Ethos when I
-     sign in** (untick it to stop the start at sign-in), **Change
+     loaded and how much memory it holds, **Settings…** (a page in your
+     browser to unload or switch the model and pick your languages), **Start
+     Ethos when I sign in** (untick it to stop the start at sign-in), **Change
      what is installed…**, and **Quit Ethos**,
    - **Ethos in Settings → Apps → Installed apps**, where **Uninstall** removes
      it (below).
@@ -148,6 +148,18 @@ clipboard, press F12, open the Console, and send the lines that start with
 `ethos:` — they say what the page looked like to the extension, which is
 exactly what is needed to fix it.
 
+**Or skip the panel and type in the reply box itself** (Gmail, Outlook on the
+web, Superhuman). Click Reply, type a line of what the reply should say, and
+press **Alt+Shift+D** with the cursor still in the box: Ethos replaces your line with
+the reply the panel would have written from it, above the quote or below it,
+wherever you typed it. In Gmail and Outlook you can also answer point by
+point: expand the quote (the **…** button), type a short note on its own line
+under each paragraph you answer, and press **Alt+Shift+D**: each note becomes the
+passage it stands for, in order, and the quote stays as it is. (Outlook does not
+mark its quote, so Ethos takes as a note any line that is not in the message you
+answer.) Ctrl+Z brings your notes back. In an empty reply box,
+the key opens the panel as before.
+
 ---
 
 ## 5. In Firefox
@@ -179,7 +191,15 @@ as `ethos-thunderbird.xpi`, and its last page shows the path. Add it once:
    Thunderbird does not need it signed, and it stays installed.
 3. Open a reply and click **Ethos** in its toolbar, or press **Alt+Shift+D**.
    Type what the reply should say, pick a draft, and it lands where the caret
-   is. Nothing is sent for you.
+   is. Nothing is sent for you. From a message you are reading, the same
+   button sits above the message (and the same shortcut works): Insert opens
+   the reply with the draft in it.
+4. Or write in the email itself: type a line of what the reply should say,
+   above or below the quote, or short notes between its paragraphs, and press
+   **Alt+Shift+D**. Each note becomes the passage it stands for, in place, and the
+   quote stays as it is. In an empty reply, the key opens Ethos as in step 3.
+   Ethos may not be able to bring the notes back with Ctrl+Z: keep a copy if
+   you want them.
 
 ## 7. In the new Outlook
 
@@ -221,6 +241,7 @@ in Firefox, drag the new `.xpi` in).
 | What you see | What it means |
 |---|---|
 | SmartScreen refuses to run it | More info → Run anyway. Once. |
+| "Ethos needs an NVIDIA graphics card" before anything downloads | `nvidia-smi` found no card: install the NVIDIA driver and launch again. With no NVIDIA card, `set ETHOS_SKIP_GPU_CHECK=1` installs anyway, drafting on the CPU (minutes per draft). |
 | "torch" fails to install | Check the NVIDIA driver is current, then `Ethos.exe --reset` and launch again. |
 | "no CUDA device" when drafting | The NVIDIA driver is older than this PyTorch needs: update it, then `Ethos.exe --reset` and launch again. |
 | An RTX 50-series (Blackwell) card | Before the first launch, set the environment variable `ETHOS_TORCH_INDEX` to `https://download.pytorch.org/whl/cu128` (System → Advanced → Environment Variables), so the newer PyTorch is installed. |

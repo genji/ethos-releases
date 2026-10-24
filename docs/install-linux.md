@@ -45,7 +45,10 @@ have). It asks which account it learns your writing from and where you
 write, and the extension is fetched only when you write in the browser. The model
 downloads while your 300 most recent sent messages are read, then
 `--serve` starts Ethos in this terminal with the password still in memory.
-`ethos install --text` asks the same questions in the terminal instead.
+Without a desktop, open the address it prints in a browser on this machine
+(from another one, forward that port with `ssh -L`); or answer every
+question with flags (`--mail imap --imap-host … --imap-user … --use browser`)
+and it installs with no window.
 
 Gmail needs an **app password**, not your Google password: turn on 2-Step
 Verification, then create one named "Ethos" at
@@ -97,8 +100,9 @@ systemctl --user restart ethos.service
 
 On a desktop, `ethos install` puts an Ethos icon in the tray and starts it at
 every login. It has the same menu as the Mac's menu bar item: what is loaded
-and how much memory it holds, **Unload the model**, **Base model** to switch
-models, **Languages**, **Start Ethos when I log in** (untick it to stop the start at login), **Change what is installed…**, and
+and how much memory it holds, **Settings…** (a page in your browser to unload
+or switch the model and pick your languages), **Start Ethos when I log in**
+(untick it to stop the start at login), **Change what is installed…**, and
 **Quit Ethos**. When Ethos is not running, **Start Ethos** starts `ethos serve`.
 
 `ethos tray` starts the icon by hand. It runs under the system's Python, which
@@ -142,6 +146,18 @@ or `systemctl --user restart ethos.service`.
 5. Type what the reply should say, press **Draft**, then **Insert into
    reply**. Edit, and send as usual; the sent version is recorded.
 
+**Or skip the panel and type in the reply box itself** (Gmail, Outlook on the
+web, Superhuman). Click Reply, type a line of what the reply should say, and
+press **Alt+Shift+D** with the cursor still in the box: Ethos replaces your line with
+the reply the panel would have written from it, above the quote or below it,
+wherever you typed it. In Gmail and Outlook you can also answer point by
+point: expand the quote (the **…** button), type a short note on its own line
+under each paragraph you answer, and press **Alt+Shift+D**: each note becomes the
+passage it stands for, in order, and the quote stays as it is. (Outlook does not
+mark its quote, so Ethos takes as a note any line that is not in the message you
+answer.) Ctrl+Z brings your notes back. In an empty reply box,
+the key opens the panel as before.
+
 If the panel cannot reach the server, check that `ethos serve` is running.
 If it still cannot, a field appears in the panel to paste the token: the
 contents of `~/.local/share/ethos/data_store/api_token`.
@@ -163,4 +179,12 @@ as `ethos-thunderbird.xpi`, and its last page shows the path. Add it once:
    Thunderbird does not need it signed, and it stays installed.
 3. Open a reply and click **Ethos** in its toolbar, or press **Alt+Shift+D**.
    Type what the reply should say, pick a draft, and it lands where the caret
-   is. Nothing is sent for you.
+   is. Nothing is sent for you. From a message you are reading, the same
+   button sits above the message (and the same shortcut works): Insert opens
+   the reply with the draft in it.
+4. Or write in the email itself: type a line of what the reply should say,
+   above or below the quote, or short notes between its paragraphs, and press
+   **Alt+Shift+D**. Each note becomes the passage it stands for, in place, and the
+   quote stays as it is. In an empty reply, the key opens Ethos as in step 3.
+   Ethos may not be able to bring the notes back with Ctrl+Z: keep a copy if
+   you want them.
